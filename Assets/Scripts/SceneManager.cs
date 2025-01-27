@@ -31,5 +31,9 @@ public class SceneManager : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("UpdatedGame");
         }
+        if (i == 3)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
+        }
     }
 }
