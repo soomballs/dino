@@ -17,23 +17,8 @@ public class SceneManager : MonoBehaviour
         
     }
 
-    public void SceneSwitcher (int i)
+    public void SceneSwitcher (string sceneName)
     {
-        if (i == 0) { }
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
-        }
-        if (i == 1)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("StartMenu");
-        }
-        if (i == 2)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("UpdatedGame");
-        }
-        if (i == 3)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
-        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 }
