@@ -18,4 +18,13 @@ public class Obstacle : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Projectile"))
+        {
+            Debug.Log("projectile detected");
+            Destroy(gameObject);
+        }
+    }
+
 }
