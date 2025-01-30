@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public float jumpForce = 8f;
     public float gravity = 9.81f * 2f;
+    public int jumpCount;
 
     private void Awake()
     {
@@ -26,10 +27,16 @@ public class Player : MonoBehaviour
         if (character.isGrounded)
         {
             direction = Vector3.down;
+            jumpCount = 2;
 
-            if (Input.GetButton("Jump")) {
-                direction = Vector3.up * jumpForce;
-            }
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
+        {
+            direction = Vector3.up * jumpForce;
+            jumpCount -= 1;
+            Debug.Log("Jump count = " + jumpCount);
+            
         }
 
         character.Move(direction * Time.deltaTime);

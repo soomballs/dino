@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 8
   gravity: 19.62
+  jumpCount: 0
 --- !u!114 &148277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -608.5, y: 275}
+  m_AnchoredPosition: {x: -450, y: 275}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358107844
@@ -1352,7 +1353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1151494384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1366,7 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 148270}
-  projectile: {fileID: 9020847862631447337, guid: b7c34ab83c91f3e429f20e7e132e1023, type: 3}
+  projectile: {fileID: 9020847862631447337, guid: 4dd771fe263e9df42bbef80e580f150b, type: 3}
 --- !u!4 &1151494385
 Transform:
   m_ObjectHideFlags: 0

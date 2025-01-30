@@ -17,9 +17,5 @@ public class Projectile : MonoBehaviour
         transform.position += GameManager.Instance.gameSpeed * Time.deltaTime * Vector3.right;
     }
 
-    public void OnBecameInvisible()
-    {
-        Destroy(this);
-    }
 
 }
