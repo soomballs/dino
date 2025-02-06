@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneManager : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioSource singleJump;
     void Start()
     {
         
@@ -15,10 +15,5 @@ public class SceneManager : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void SceneSwitcher (string sceneName)
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 }

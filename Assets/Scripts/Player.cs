@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private CharacterController character;
+    private AudioSource[] audioSources;
     private Vector3 direction;
 
     public float jumpForce = 8f;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<CharacterController>();
+        audioSources = GetComponents<AudioSource>();
     }
 
     private void OnEnable()
@@ -35,7 +37,17 @@ public class Player : MonoBehaviour
         {
             direction = Vector3.up * jumpForce;
             jumpCount -= 1;
-            Debug.Log("Jump count = " + jumpCount);
+
+            switch(jumpCount) {
+                case 1: 
+                    audioSources[0].Play();
+                    Debug.Log("one jump");
+                    break;
+                case 0:
+                    audioSources[1].Play();
+                    Debug.Log("two jump");
+                    break;
+            }
             
         }
 
