@@ -645,6 +645,8 @@ MonoBehaviour:
     spawnChance: 0.1
   - prefab: {fileID: 9020847862631447337, guid: 5dccca64ef3c58f4985065fd38779786, type: 3}
     spawnChance: 0.05
+  - prefab: {fileID: 9020847862631447337, guid: 4dd771fe263e9df42bbef80e580f150b, type: 3}
+    spawnChance: 0.2
   minSpawnRate: 1
   maxSpawnRate: 1.5
 --- !u!1 &358107842
@@ -1770,7 +1772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 148270}
-  projectile: {fileID: 9020847862631447337, guid: 4dd771fe263e9df42bbef80e580f150b, type: 3}
+  projectile: {fileID: 9020847862631447337, guid: b7c34ab83c91f3e429f20e7e132e1023, type: 3}
 --- !u!4 &1151494385
 Transform:
   m_ObjectHideFlags: 0
@@ -1779,7 +1781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151494383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 594.602, y: 141.01712, z: -1.5680649}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
