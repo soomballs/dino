@@ -99,4 +99,18 @@ public class GameManager : MonoBehaviour
         hiscoreText.text = Mathf.FloorToInt(hiscore).ToString("D5");
     }
 
+    public float getScore()
+    {
+        return score;
+    }
+
+    public bool getGameOver()
+    {
+        if (enabled == false)
+        {
+            return true;
+        }
+        return false;
+    }
+
 }
