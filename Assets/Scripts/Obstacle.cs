@@ -29,7 +29,7 @@ public class Obstacle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Obstacle Detected");
-            GameManager.Instance.GameOver();
+         //   GameManager.Instance.GameOver();
         }
     }
 
