@@ -34,6 +34,14 @@ public class ButtonUsage : MonoBehaviour
         }
     }
 
+    public void quitApp() {
+        Application.Quit();
+
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
+
     private IEnumerator WaitForSoundAndChangeScene(float soundDuration) {
         yield return new WaitForSeconds(soundDuration);
 
