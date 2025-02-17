@@ -225,7 +225,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 8
   gravity: 19.62
+  fastGravity: 100
+  currentGravity: 0
   jumpCount: 0
+  isFastFalling: 0
 --- !u!114 &148277
 MonoBehaviour:
   m_ObjectHideFlags: 0
