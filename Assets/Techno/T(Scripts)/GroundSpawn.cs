@@ -1,41 +1,25 @@
-using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class GroundSpawn : MonoBehaviour
 {
     [System.Serializable]
     public struct SpawnableObject
-
-
     {
         public GameObject prefab;
         [Range(0f, 1f)]
         public float spawnChance;
-        [Range(0f, 1f)]
-        public float repeatChance;
-
     }
 
     public SpawnableObject[] objects;
+    public List<GroundMove> activeGrounds = new List<GroundMove>(); // Track all ground pieces
+
     public float minSpawnRate = 1f;
-    public float maxSpawnRate = 1f;
-
-    public float targetXPosition = 2.5f;
-
-    //repeat duration
-    public float minRepeat = 10f;
-    public float maxRepeat = 30f;
-    private bool repeatInProgress = false;
-
-    private float repeatChance;
-    public GroundMove groundMove;
-
+    public float maxSpawnRate = 2f;
 
     private void OnEnable()
     {
-        Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
+        Invoke(nameof(Spawn), 2f);
     }
 
     private void OnDisable()
@@ -45,86 +29,43 @@ public class GroundSpawn : MonoBehaviour
 
     private void Spawn()
     {
-        float spawnChance = Random.value;
-        repeatChance = 0.5f;
-        float repeatTime = Random.Range(minRepeat, maxRepeat);
+        float spawnChance = 0f; //usual Random.value
+        //also refer to tutorial concerning reducing the object spawn chance?
 
         foreach (SpawnableObject obj in objects)
         {
-            if (spawnChance <= obj.spawnChance)
+            if (spawnChance < obj.spawnChance)
             {
                 GameObject ground = Instantiate(obj.prefab);
+                GroundMove newGroundMove = ground.GetComponent<GroundMove>();
 
+                if (newGroundMove != null)
+                {
+                    activeGrounds.Add(newGroundMove); // Store the new ground object
+                }
 
                 MeshRenderer meshRenderer = ground.GetComponent<MeshRenderer>();
-
                 float leftmostOffset = meshRenderer.bounds.extents.x;
                 ground.transform.position = new Vector3(transform.position.x + leftmostOffset, transform.position.y, transform.position.z);
 
-                GroundMove newGroundMove = ground.GetComponent<GroundMove>();
-
-                if (repeatChance > obj.repeatChance)
-                {
-                    StartCoroutine(NormalAction(newGroundMove));
-                    // repeatInProgress = true;
-                }
-
-
-                break; // Exit the loop after spawning an object
+                break;
             }
-
-            Debug.Log("spawnchance is shrinking");
-
         }
-
     }
 
-
-    private IEnumerator NormalAction(GroundMove localGroundMove)
+    private void Update()
     {
-        float elapsedTime = 0f;
-        if (localGroundMove == null) yield break;
-
-        while (!localGroundMove.exitScreenCheck)
+        for (int i = activeGrounds.Count - 1; i >= 0; i--)
         {
-            localGroundMove.exitScreen();
-
-            if (localGroundMove.nextGround)
+            if (activeGrounds[i] != null && activeGrounds[i].nextGround)
             {
-                Debug.Log("new one");
-                elapsedTime += Time.deltaTime;
-
-                if(elapsedTime > 5) {
-                    localGroundMove.nextGround = false;
-                    Spawn();
-                    yield break;
-                }
+                activeGrounds[i].nextGround = false; // Reset to avoid multiple spawns
+                Debug.Log(activeGrounds.Count);
+                Invoke(nameof(Spawn), 0.5f);
+                Debug.Log(activeGrounds.Count);
+                activeGrounds.RemoveAt(i); // Remove once it's processed
+                Debug.Log(activeGrounds.Count);
             }
-
-            if (localGroundMove.offScreen == true)
-            {
-                Destroy(localGroundMove.gameObject);
-                yield break;
-            }
-
-            yield return null;
         }
-
     }
-
-    private IEnumerator nextGround(float delay)
-    {
-        groundMove.nextGround = false;
-
-        if (groundMove.repeatAction == true)
-        {
-            Spawn();
-            yield return new WaitForSeconds(delay);
-            
-        }
-
-
-
-    }
-
 }

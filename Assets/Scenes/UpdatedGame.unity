@@ -3215,13 +3215,9 @@ MonoBehaviour:
   objects:
   - prefab: {fileID: 3066267724498017096, guid: 1e9ad54480aa73c4e85a844173340076, type: 3}
     spawnChance: 1
-    repeatChance: 0
+  activeGrounds: []
   minSpawnRate: 1
   maxSpawnRate: 2
-  targetXPosition: 2.5
-  minRepeat: 10
-  maxRepeat: 30
-  groundMove: {fileID: 0}
 --- !u!4 &1865679967
 Transform:
   m_ObjectHideFlags: 0
@@ -3230,7 +3226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865679965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.22, y: 0.08, z: 0.016192187}
+  m_LocalPosition: {x: 9.37, y: 0.13, z: 0.016192187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
