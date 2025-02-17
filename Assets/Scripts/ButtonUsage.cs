@@ -11,7 +11,7 @@ public class ButtonUsage : MonoBehaviour
     private SceneManagerSingleton buttonInstance;
 
 
-     
+
     void Start()
     {
         buttonAudio = GetComponent<AudioSource>();
@@ -29,12 +29,18 @@ public class ButtonUsage : MonoBehaviour
         }
         else
         {
-            
+
             Debug.Log("The scene Changer isn't here.");
         }
     }
 
-    private IEnumerator WaitForSoundAndChangeScene(float soundDuration) {
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    private IEnumerator WaitForSoundAndChangeScene(float soundDuration)
+    {
         yield return new WaitForSeconds(soundDuration);
 
         buttonInstance.ChangeScene(sceneToLoad);
