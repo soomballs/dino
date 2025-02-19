@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     private Player player;
     private Spawner spawner;
+
+    private GroundSpawn terrainSpawner;
+    public bool terrainReturn = true;
 
     private float score;
     public float Score => score;
@@ -42,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
+        terrainSpawner = FindAnyObjectByType<GroundSpawn>();
 
         NewGame();
     }
@@ -60,6 +65,12 @@ public class GameManager : MonoBehaviour
 
         player.gameObject.SetActive(true);
         spawner.gameObject.SetActive(true);
+        terrainSpawner.gameObject.SetActive(true);
+        terrainSpawner.transform.position = new Vector3(-9.6f,0.13f,0.01619219f);
+        StartCoroutine(moveBack(2.0f));
+
+        terrainSpawner.Spawn();
+        terrainReturn = false;
         gameOverText.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
 
@@ -113,4 +124,14 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    private IEnumerator moveBack(float duration) {
+        yield return new WaitForSeconds(duration);
+                terrainSpawner.transform.position = new Vector3(9.37f,0.13f,0.01619219f);
+        terrainReturn = false;
+
+    }
+    
+
 }
+
+

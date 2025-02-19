@@ -19,7 +19,9 @@ public class GroundSpawn : MonoBehaviour
 
     private void OnEnable()
     {
+        if(GameManager.Instance != null && (GameManager.Instance.terrainReturn == true)) {
         Invoke(nameof(Spawn), 2f);
+        }
     }
 
     private void OnDisable()
@@ -27,7 +29,7 @@ public class GroundSpawn : MonoBehaviour
         CancelInvoke();
     }
 
-    private void Spawn()
+    public void Spawn()
     {
         float spawnChance = 0f; //usual Random.value
         //also refer to tutorial concerning reducing the object spawn chance?

@@ -96,3 +96,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77062016415fd34a83dd900e8adc4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextGround: 0
+  repeatChance: 0.5
