@@ -649,6 +649,7 @@ MonoBehaviour:
     spawnChance: 0.2
   minSpawnRate: 1
   maxSpawnRate: 1.5
+  TSpawn: {fileID: 1865679965}
 --- !u!1 &272948698
 GameObject:
   m_ObjectHideFlags: 0
@@ -3219,6 +3220,7 @@ MonoBehaviour:
   activeGrounds: []
   minSpawnRate: 1
   maxSpawnRate: 2
+  isSpawning: 0
 --- !u!4 &1865679967
 Transform:
   m_ObjectHideFlags: 0

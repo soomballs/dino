@@ -83,12 +83,14 @@ public class GroundMove : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Obstacle"))
         {
+            Debug.Log("ground is touching thing");
             //Debug.Log("Obstacle Detected");
             //   GameManager.Instance.GameOver();
         }
     }
+
 
     public void meshMovement()
     {

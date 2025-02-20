@@ -13,10 +13,14 @@ public class Spawner : MonoBehaviour
     public SpawnableObject[] objects;
     public float minSpawnRate = 1f;
     public float maxSpawnRate = 2f;
+    public GameObject TSpawn;
 
-    private void OnEnable()
+    private GroundSpawn tItem;
+
+    private void Start()
     {
-        Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
+        tItem = TSpawn.GetComponent<GroundSpawn>(); // Get reference to GroundSpawn script
+        InvokeRepeating(nameof(CheckAndSpawn), 0f, 0.5f); // Check every 0.5 seconds
     }
 
     private void OnDisable()
@@ -24,9 +28,20 @@ public class Spawner : MonoBehaviour
         CancelInvoke();
     }
 
+    private void CheckAndSpawn()
+    {
+        if (tItem == null) return;
+
+        if (tItem.isSpawning && !IsInvoking(nameof(Spawn))) // Only spawn if allowed
+        {
+            Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
+        }
+    }
+
     private void Spawn()
     {
-        
+        if (tItem == null || !tItem.isSpawning) return; // Stop if spawning is not allowed
+
         float spawnChance = Random.value;
 
         foreach (SpawnableObject obj in objects)
@@ -43,5 +58,4 @@ public class Spawner : MonoBehaviour
 
         Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
     }
-
 }

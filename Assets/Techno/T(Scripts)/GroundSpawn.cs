@@ -10,19 +10,22 @@ public class GroundSpawn : MonoBehaviour
         [Range(0f, 1f)]
         public float spawnChance;
     }
-
     public SpawnableObject[] objects;
     public List<GroundMove> activeGrounds = new List<GroundMove>(); // Track all ground pieces
 
     public float minSpawnRate = 1f;
     public float maxSpawnRate = 2f;
 
+    public bool isSpawning = true;
+
     private void OnEnable()
     {
         if(GameManager.Instance != null && (GameManager.Instance.terrainReturn == true)) {
+        isSpawning = true;
         Invoke(nameof(Spawn), 2f);
         }
     }
+
 
     private void OnDisable()
     {
@@ -32,6 +35,7 @@ public class GroundSpawn : MonoBehaviour
     public void Spawn()
     {
 
+        isSpawning = true;
         float spawnChance = 0f; //usual Random.value
         //also refer to tutorial concerning reducing the object spawn chance?
 
@@ -63,8 +67,10 @@ public class GroundSpawn : MonoBehaviour
             if (activeGrounds[i] != null && activeGrounds[i].nextGround)
             {
                 activeGrounds[i].nextGround = false; // Reset to avoid multiple spawns
+                //isSpawning =  false;
                 Debug.Log(activeGrounds.Count);
                 Invoke(nameof(Spawn), 0.5f);
+                //isSpawning = true;
                 Debug.Log(activeGrounds.Count);
                 activeGrounds.RemoveAt(i); // Remove once it's processed
                 Debug.Log(activeGrounds.Count);

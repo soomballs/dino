@@ -20,6 +20,9 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("GROUND")) {
+            Debug.Log("we touching ground");
+        }
         if (other.CompareTag("Projectile"))
         {
             Debug.Log("projectile detected");
@@ -28,7 +31,7 @@ public class Obstacle : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Obstacle Detected");
+            //Debug.Log("Obstacle Detected");
          //   GameManager.Instance.GameOver();
         }
     }
