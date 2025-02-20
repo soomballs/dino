@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Obstacle")) {
             Debug.Log("Obstacle Detected");
-            GameManager.Instance.GameOver();
+            //GameManager.Instance.GameOver();
         }
     }
 
