@@ -26,6 +26,7 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
+        
         float spawnChance = Random.value;
 
         foreach (SpawnableObject obj in objects)

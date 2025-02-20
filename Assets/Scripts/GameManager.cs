@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(true);
         spawner.gameObject.SetActive(true);
         terrainSpawner.gameObject.SetActive(true);
-        terrainSpawner.transform.position = new Vector3(-9.6f,0.13f,0.01619219f);
+        terrainSpawner.transform.position = new Vector3(-9.6f,0.17f,0.01619219f);
         StartCoroutine(moveBack(2.0f));
 
         terrainSpawner.Spawn();
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator moveBack(float duration) {
         yield return new WaitForSeconds(duration);
-                terrainSpawner.transform.position = new Vector3(9.37f,0.13f,0.01619219f);
+        terrainSpawner.transform.position = new Vector3(9.37f,0.17f,0.01619219f);
         terrainReturn = false;
 
     }

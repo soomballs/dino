@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+[RequireComponent(typeof(MeshRenderer))]
 public class GroundMove : MonoBehaviour
 {
     private float leftEdge;
@@ -9,6 +9,7 @@ public class GroundMove : MonoBehaviour
     [Range(0f, 1f)]
     public float repeatChance;
     private bool repeatState = true;
+    public bool land = false;
 
     private MeshRenderer meshRenderer;
 
@@ -25,9 +26,12 @@ public class GroundMove : MonoBehaviour
 
     private void Start()
     {
-        float randY = Random.Range(-0.5f, 2.0f);
-        if(GameManager.Instance.terrainReturn == true) {
-            randY = 0.8f;
+        land = true;
+        //float randY = Random.Range(-0.5f, 2.0f);
+        float randY = 0.17f;
+        if (GameManager.Instance.terrainReturn == true)
+        {
+            randY = 0.17f;
             repeatState = true;
 
         }
@@ -86,7 +90,7 @@ public class GroundMove : MonoBehaviour
         }
     }
 
-        public void meshMovement()
+    public void meshMovement()
     {
         float speed = GameManager.Instance.gameSpeed / transform.localScale.x;
         Vector2 offset = meshRenderer.material.mainTextureOffset;
@@ -94,18 +98,19 @@ public class GroundMove : MonoBehaviour
         meshRenderer.material.mainTextureOffset = offset;
     }
 
-private IEnumerator repeatDelay(float duration) {
-    //float timer = 0f; // Timer to track how long the loop has been running
+    private IEnumerator repeatDelay(float duration)
+    {
+        //float timer = 0f; // Timer to track how long the loop has been running
 
-    yield return new WaitForSeconds(duration);
-/*     while (timer < duration) {
-        meshMovement(); // Call your movement function
-        timer += Time.deltaTime; // Increment the timer by the time passed since the last frame
-        yield return null; // Wait for the next frame
+        yield return new WaitForSeconds(duration);
+        /*     while (timer < duration) {
+                meshMovement(); // Call your movement function
+                timer += Time.deltaTime; // Increment the timer by the time passed since the last frame
+                yield return null; // Wait for the next frame
+            }
+         */
+        repeatState = false; // Set repeatState to false after the duration has passed
     }
- */
-    repeatState = false; // Set repeatState to false after the duration has passed
-}
 
 
 }

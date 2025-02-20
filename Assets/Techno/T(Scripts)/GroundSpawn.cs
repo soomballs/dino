@@ -31,6 +31,7 @@ public class GroundSpawn : MonoBehaviour
 
     public void Spawn()
     {
+
         float spawnChance = 0f; //usual Random.value
         //also refer to tutorial concerning reducing the object spawn chance?
 
