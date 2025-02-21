@@ -18,7 +18,7 @@ public class FadeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator Fade()

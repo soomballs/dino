@@ -31,6 +31,10 @@ public class Player : MonoBehaviour
     {
         direction += currentGravity * Time.deltaTime * Vector3.down;
 
+        if (checkFalling() == true)
+        {
+            GameManager.Instance.GameOver();
+        }
         if (character.isGrounded)
         {
             direction = Vector3.down;
@@ -83,6 +87,18 @@ public class Player : MonoBehaviour
         {
             currentGravity = gravity;
 
+        }
+    }
+
+    private bool checkFalling()
+    {
+        if (transform.position.y < -2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
