@@ -6,6 +6,7 @@ public class AnimatedSprite : MonoBehaviour
     public Sprite[] sprites;
     private SpriteRenderer spriteRenderer;
     private int frame;
+    private int selectedOption;
 
     private void Awake()
     {
@@ -14,7 +15,20 @@ public class AnimatedSprite : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke(nameof(Animate), 0f);
+        selectedOption = PlayerPrefs.GetInt("selectedOption", 0);
+        Debug.Log("Selected Option from OnEnable: " + selectedOption);
+
+        if(selectedOption == 0){
+            Invoke(nameof(AnimateBase), 0f);
+        }
+        else if (selectedOption == 1){
+            Invoke(nameof(AnimateShades), 0f);
+        }
+        else if(selectedOption == 2)
+        {
+            Invoke(nameof(AnimateScar), 0f);
+        }
+
     }
 
     private void OnDisable()
@@ -22,19 +36,54 @@ public class AnimatedSprite : MonoBehaviour
         CancelInvoke();
     }
 
-    private void Animate()
+    private void AnimateBase()
     {
         frame++;
 
-        if (frame >= sprites.Length) {
+        if (frame >= 2) {
             frame = 0;
         }
 
-        if (frame >= 0 && frame < sprites.Length) {
+        if(frame >= 0 && frame < 2)
+        {
             spriteRenderer.sprite = sprites[frame];
         }
 
-        Invoke(nameof(Animate), 1f / GameManager.Instance.gameSpeed);
+        Invoke(nameof(AnimateBase), 1f / GameManager.Instance.gameSpeed);
+    }
+
+    private void AnimateShades()
+    {
+        frame++;
+
+        if (frame >= 2) {
+            frame = 0;
+        }
+
+        if(frame >= 0 && frame < 2)
+        {
+            spriteRenderer.sprite = sprites[frame + 2];
+        }
+
+        Invoke(nameof(AnimateShades), 1f / GameManager.Instance.gameSpeed);
+        
+    }
+
+    private void AnimateScar()
+    {
+        frame++;
+
+        if (frame >= 2) {
+            frame = 0;
+        }
+
+        if(frame >= 0 && frame < 2)
+        {
+            spriteRenderer.sprite = sprites[frame + 4];
+        }
+
+        Invoke(nameof(AnimateScar), 1f / GameManager.Instance.gameSpeed);
+        
     }
 
 }

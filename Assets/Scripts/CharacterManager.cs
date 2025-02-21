@@ -27,7 +27,9 @@ public class CharacterManager : MonoBehaviour
         }
 
         updateCharacter(selectedOption);
-
+        PlayerPrefs.SetInt("selectedOption", selectedOption);
+        PlayerPrefs.Save();
+        Debug.Log("Selected Option from nextButton: " + selectedOption);
     }
 
     public void BackOption()
@@ -40,7 +42,9 @@ public class CharacterManager : MonoBehaviour
         }
 
         updateCharacter(selectedOption);
-
+        PlayerPrefs.SetInt("selectedOption", selectedOption);
+        PlayerPrefs.Save();
+        Debug.Log("Selected Option from backButton: " + selectedOption);
     }
 
     public void updateCharacter(int selectedOption)
@@ -48,6 +52,11 @@ public class CharacterManager : MonoBehaviour
         Character character = characterDB.GetCharacter(selectedOption);
         artworkSprite.sprite = character.characterSprite;
         nameText.text = character.characterName;
+    }
+
+    public int getOption()
+    {
+        return selectedOption;
     }
 
 }

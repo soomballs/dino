@@ -222,9 +222,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd82c8c83ddcd7048ab3ec0a0c988175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 020a6ada93c385e47b8dc67347f0006d, type: 2}
+  artworkSprite: {fileID: 148274}
   jumpForce: 8
   gravity: 19.62
+  fastGravity: 100
+  currentGravity: 0
   jumpCount: 0
+  isFastFalling: 0
 --- !u!114 &148277
 MonoBehaviour:
   m_ObjectHideFlags: 0

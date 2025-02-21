@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 148277}
   - component: {fileID: 148279}
   - component: {fileID: 148280}
+  - component: {fileID: 148281}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -244,6 +245,11 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 9138bd4196615a14a840d76bdc47f64b, type: 3}
   - {fileID: 21300000, guid: 9dd7d801937e5a742a96b945cfa468ac, type: 3}
+  - {fileID: 21300000, guid: 57395b031ef617d47a5727fe43d5d10b, type: 3}
+  - {fileID: 21300000, guid: 458c6337895a2434d90e4fc9e5eace69, type: 3}
+  - {fileID: 21300000, guid: 19277e358362de74ab39548d6f7e8451, type: 3}
+  - {fileID: 21300000, guid: 982026d3058ec2d43a4cc311cd00a925, type: 3}
+  selectedOption: 0
 --- !u!143 &148278
 CharacterController:
   m_ObjectHideFlags: 0
@@ -454,6 +460,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &148281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ef7676cf3a48049bcd2db1b8059d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: 020a6ada93c385e47b8dc67347f0006d, type: 2}
+  nameText: {fileID: 0}
+  artworkSprite: {fileID: 148274}
 --- !u!1 &151625049
 GameObject:
   m_ObjectHideFlags: 0
