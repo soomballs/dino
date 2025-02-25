@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float fastGravity = 100f;
     public float currentGravity;
     public int jumpCount;
+    public bool sprinting;
     public bool isFastFalling;
 
     private void Awake()
@@ -39,6 +40,8 @@ public class Player : MonoBehaviour
         {
             direction = Vector3.down;
             jumpCount = 2;
+
+
             isFastFalling = false;
             
         }
@@ -47,8 +50,9 @@ public class Player : MonoBehaviour
             direction = Vector3.up * jumpForce;
             jumpCount -= 1;
 
-            switch(jumpCount) {
-                case 1: 
+            switch (jumpCount)
+            {
+                case 1:
                     audioSources[0].Play();
                     Debug.Log("one jump");
                     break;
@@ -57,7 +61,15 @@ public class Player : MonoBehaviour
                     Debug.Log("two jump");
                     break;
             }
-            
+
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            sprinting = true;
+        }
+        else
+        {
+            sprinting = false;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow) && !character.isGrounded)
         {
@@ -71,12 +83,17 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle")) {
+        if (other.CompareTag("Obstacle"))
+        {
             Debug.Log("Obstacle Detected");
             GameManager.Instance.GameOver();
         }
     }
 
+    public bool isSprinting()
+    {
+        return sprinting;
+    }
     private void handleFastFall()
     {
         if (isFastFalling == true)
@@ -101,4 +118,5 @@ public class Player : MonoBehaviour
             return false;
         }
     }
+
 }

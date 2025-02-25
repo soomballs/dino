@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
     public float minSpawnRate = 1f;
     public float maxSpawnRate = 2f;
     public GameObject TSpawn;
+    public Player player;
 
     private GroundSpawn tItem;
 

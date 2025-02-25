@@ -11,11 +11,20 @@ public class Obstacle : MonoBehaviour
 
     private void Update()
     {
-        transform.position += GameManager.Instance.gameSpeed * Time.deltaTime * Vector3.left;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.position += 1.5f * GameManager.Instance.gameSpeed * Time.deltaTime * Vector3.left;
+        }
+        else
+        {
+            transform.position += GameManager.Instance.gameSpeed * Time.deltaTime * Vector3.left;
+        }
+        
 
         if (transform.position.x < leftEdge) {
             Destroy(gameObject);
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)

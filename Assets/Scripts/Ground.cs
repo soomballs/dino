@@ -13,6 +13,10 @@ public class Ground : MonoBehaviour
     private void Update()
     {
         float speed = GameManager.Instance.gameSpeed / transform.localScale.x;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed *= 1.5f;
+        }
         meshRenderer.material.mainTextureOffset += speed * Time.deltaTime * Vector2.right;
     }
 
