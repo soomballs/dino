@@ -60,7 +60,7 @@ public class AnimatedSprite : MonoBehaviour
             frame = 0;
         }
 
-        if(frame >= 0 && frame < 2)
+        if(frame >= 0 && frame <= 1)
         {
             spriteRenderer.sprite = sprites[frame + 2];
         }
@@ -77,7 +77,7 @@ public class AnimatedSprite : MonoBehaviour
             frame = 0;
         }
 
-        if(frame >= 0 && frame < 2)
+        if(frame >= 0 && frame <= 1)
         {
             spriteRenderer.sprite = sprites[frame + 4];
         }

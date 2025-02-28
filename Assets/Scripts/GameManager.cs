@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private Player player;
     private Spawner spawner;
 
+    private PowerupSpawner powerupSpawner;
+
     private GroundSpawn terrainSpawner;
     public bool terrainReturn = true;
 
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
+        powerupSpawner = FindObjectOfType<PowerupSpawner>();
         terrainSpawner = FindAnyObjectByType<GroundSpawn>();
 
         NewGame();
@@ -54,17 +57,23 @@ public class GameManager : MonoBehaviour
     public void NewGame()
     {
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
+        Powerup[] powerups = FindObjectsOfType<Powerup>();
 
         foreach (var obstacle in obstacles) {
             Destroy(obstacle.gameObject);
+        }
+
+        foreach (var powerup in powerups) {
+            Destroy(powerup.gameObject);
         }
 
         score = 0f;
         gameSpeed = initialGameSpeed;
         enabled = true;
 
-        player.gameObject.SetActive(true);
         spawner.gameObject.SetActive(true);
+        powerupSpawner.gameObject.SetActive(true);
+        player.gameObject.SetActive(true);
         terrainSpawner.gameObject.SetActive(true);
         terrainSpawner.transform.position = new Vector3(-9.6f,0.17f,0.01619219f);
         StartCoroutine(moveBack(2.0f));
@@ -83,7 +92,6 @@ public class GameManager : MonoBehaviour
         enabled = false;
 
         player.gameObject.SetActive(false);
-        spawner.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(true);
         retryButton.gameObject.SetActive(true);
 
@@ -113,6 +121,11 @@ public class GameManager : MonoBehaviour
     public float getScore()
     {
         return score;
+    }
+
+    public void addScore(float amount)
+    {
+        score += amount;
     }
 
     public bool getGameOver()
