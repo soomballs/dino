@@ -73,13 +73,13 @@ public class GroundSpawn : MonoBehaviour
                  OnStopSpawning?.Invoke(); // Notify listeners that spawning has stopped
                 Debug.Log(activeGrounds.Count);
                 Invoke(nameof(Spawn), 0.5f);
-                //isSpawning = true;
+                isSpawning = true;
                 Debug.Log(activeGrounds.Count);
                 activeGrounds.RemoveAt(i); // Remove once it's processed
                 Debug.Log(activeGrounds.Count);
             }
             
         }
-         isSpawning = true;
+         //isSpawning = true;
     }
 }
