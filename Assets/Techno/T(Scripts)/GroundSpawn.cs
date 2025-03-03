@@ -37,7 +37,7 @@ public class GroundSpawn : MonoBehaviour
     public void Spawn()
     {
 
-        isSpawning = true;
+        //isSpawning = true;
         float spawnChance = 0f; //usual Random.value
         //also refer to tutorial concerning reducing the object spawn chance?
 
@@ -69,11 +69,12 @@ public class GroundSpawn : MonoBehaviour
             if (activeGrounds[i] != null && activeGrounds[i].nextGround)
             {
                 activeGrounds[i].nextGround = false; // Reset to avoid multiple spawns
-                isSpawning =  false;
-                 OnStopSpawning?.Invoke(); // Notify listeners that spawning has stopped
+                //isSpawning =  false;
+ // Notify listeners that spawning has stopped
                 Debug.Log(activeGrounds.Count);
                 Invoke(nameof(Spawn), 0.5f);
-                isSpawning = true;
+                OnStopSpawning?.Invoke();
+                //isSpawning = true;
                 Debug.Log(activeGrounds.Count);
                 activeGrounds.RemoveAt(i); // Remove once it's processed
                 Debug.Log(activeGrounds.Count);

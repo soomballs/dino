@@ -4,9 +4,11 @@ public class Obstacle : MonoBehaviour
 {
     private float leftEdge;
 
+
     private void Start()
     {
         leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 2f;
+
     }
 
     private void Update()
@@ -22,6 +24,10 @@ public class Obstacle : MonoBehaviour
         
 
         if (transform.position.x < leftEdge) {
+            Destroy(gameObject);
+        }
+
+        if(GameManager.Instance.noMore) {
             Destroy(gameObject);
         }
         

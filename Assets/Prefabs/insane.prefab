@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa01bef04456d489a93b8adc7fec01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TSpawn: {fileID: 7537230552433527769, guid: 195bb435fe326524e9b3bfc7ae4592d8, type: 3}
 --- !u!114 &-1319957235900924292
 MonoBehaviour:
   m_ObjectHideFlags: 0

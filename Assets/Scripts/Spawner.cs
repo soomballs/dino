@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -15,6 +16,7 @@ public class Spawner : MonoBehaviour
     public float maxSpawnRate = 2f;
     public GameObject TSpawn;
     public Player player;
+    private bool shutDown = false;
 
     private GroundSpawn tItem;
 
@@ -50,12 +52,12 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        
-        if (tItem.isSpawning == false) {
-            Debug.Log("no go");
+
+      //  if (tItem.isSpawning == false) {
+       //     Debug.Log("no go");
              //Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
-             return;
-        } // Stop if spawning is not allowed
+       //      return;
+       // } // Stop if spawning is not allowed
 
         float spawnChance = Random.value;
 
@@ -65,6 +67,9 @@ public class Spawner : MonoBehaviour
             {
                 GameObject obstacle = Instantiate(obj.prefab);
                 obstacle.transform.position += transform.position;
+                if(shutDown) {
+                    Destroy(obstacle);
+                }
                 break;
             }
 
@@ -72,11 +77,35 @@ public class Spawner : MonoBehaviour
         }
 
         Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
+        //StartCoroutine(spawnCheck(2f));
+        
     }
+
+
 
     private void HandleSpawningStopped()
 {
     Debug.Log("no go"); // Print message when spawning stops
+    CancelInvoke();
+    StartCoroutine(shutCheck(1f));
+
+
 }
+
+private IEnumerator shutCheck(float duration) {
+    yield return new WaitForSeconds(duration);
+    GameManager.Instance.noMore = true;
+    shutDown = true;
+    StartCoroutine(spawnCheck(0.5f));
+}
+
+private IEnumerator spawnCheck(float duration) {
+    yield return new WaitForSeconds(duration);
+    shutDown = false;
+    GameManager.Instance.noMore = false;
+    Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
+}
+
+
 
 }

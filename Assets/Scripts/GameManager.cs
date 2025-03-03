@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private Player player;
     private Spawner spawner;
+    public bool noMore = false;
 
     private PowerupSpawner powerupSpawner;
 
