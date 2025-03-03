@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GroundSpawn : MonoBehaviour
 {
+    public event Action OnStopSpawning; // Event to notify when spawning stops
     [System.Serializable]
     public struct SpawnableObject
     {
@@ -16,7 +18,7 @@ public class GroundSpawn : MonoBehaviour
     public float minSpawnRate = 1f;
     public float maxSpawnRate = 2f;
 
-    public bool isSpawning = true;
+    public bool isSpawning = false;
 
     private void OnEnable()
     {
@@ -67,7 +69,8 @@ public class GroundSpawn : MonoBehaviour
             if (activeGrounds[i] != null && activeGrounds[i].nextGround)
             {
                 activeGrounds[i].nextGround = false; // Reset to avoid multiple spawns
-                //isSpawning =  false;
+                isSpawning =  false;
+                 OnStopSpawning?.Invoke(); // Notify listeners that spawning has stopped
                 Debug.Log(activeGrounds.Count);
                 Invoke(nameof(Spawn), 0.5f);
                 //isSpawning = true;
@@ -75,6 +78,8 @@ public class GroundSpawn : MonoBehaviour
                 activeGrounds.RemoveAt(i); // Remove once it's processed
                 Debug.Log(activeGrounds.Count);
             }
+            
         }
+         isSpawning = true;
     }
 }

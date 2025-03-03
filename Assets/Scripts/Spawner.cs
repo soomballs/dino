@@ -21,7 +21,16 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         tItem = TSpawn.GetComponent<GroundSpawn>(); // Get reference to GroundSpawn script
-        InvokeRepeating(nameof(CheckAndSpawn), 0f, 0.5f); // Check every 0.5 seconds
+        //InvokeRepeating(nameof(CheckAndSpawn), 0f, 0.5f); // Check every 0.5 seconds
+            if (tItem != null)
+    {
+        tItem.OnStopSpawning += HandleSpawningStopped; // Subscribe to the event
+    }
+    }
+
+    private void OnEnable()
+    {
+     Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));        
     }
 
     private void OnDisable()
@@ -41,7 +50,12 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        if (tItem == null || !tItem.isSpawning) return; // Stop if spawning is not allowed
+        
+        if (tItem.isSpawning == false) {
+            Debug.Log("no go");
+             //Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
+             return;
+        } // Stop if spawning is not allowed
 
         float spawnChance = Random.value;
 
@@ -59,4 +73,10 @@ public class Spawner : MonoBehaviour
 
         Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
     }
+
+    private void HandleSpawningStopped()
+{
+    Debug.Log("no go"); // Print message when spawning stops
+}
+
 }

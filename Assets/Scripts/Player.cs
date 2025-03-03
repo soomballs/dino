@@ -85,8 +85,8 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            Debug.Log("Obstacle Detected");
-            GameManager.Instance.GameOver();
+           // Debug.Log("Obstacle Detected");
+            //GameManager.Instance.GameOver();
         }
     }
 

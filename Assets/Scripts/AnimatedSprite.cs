@@ -6,7 +6,6 @@ public class AnimatedSprite : MonoBehaviour
     public Sprite[] sprites;
     private SpriteRenderer spriteRenderer;
     private int frame;
-    private int selectedOption;
 
     private void Awake()
     {
@@ -15,20 +14,7 @@ public class AnimatedSprite : MonoBehaviour
 
     private void OnEnable()
     {
-        selectedOption = PlayerPrefs.GetInt("selectedOption", 0);
-        Debug.Log("Selected Option from OnEnable: " + selectedOption);
-
-        if(selectedOption == 0){
-            Invoke(nameof(AnimateBase), 0f);
-        }
-        else if (selectedOption == 1){
-            Invoke(nameof(AnimateShades), 0f);
-        }
-        else if(selectedOption == 2)
-        {
-            Invoke(nameof(AnimateScar), 0f);
-        }
-
+        Invoke(nameof(Animate), 0f);
     }
 
     private void OnDisable()
@@ -36,54 +22,19 @@ public class AnimatedSprite : MonoBehaviour
         CancelInvoke();
     }
 
-    private void AnimateBase()
+    private void Animate()
     {
         frame++;
 
-        if (frame >= 2) {
+        if (frame >= sprites.Length) {
             frame = 0;
         }
 
-        if(frame >= 0 && frame < 2)
-        {
+        if (frame >= 0 && frame < sprites.Length) {
             spriteRenderer.sprite = sprites[frame];
         }
 
-        Invoke(nameof(AnimateBase), 1f / GameManager.Instance.gameSpeed);
-    }
-
-    private void AnimateShades()
-    {
-        frame++;
-
-        if (frame >= 2) {
-            frame = 0;
-        }
-
-        if(frame >= 0 && frame <= 1)
-        {
-            spriteRenderer.sprite = sprites[frame + 2];
-        }
-
-        Invoke(nameof(AnimateShades), 1f / GameManager.Instance.gameSpeed);
-        
-    }
-
-    private void AnimateScar()
-    {
-        frame++;
-
-        if (frame >= 2) {
-            frame = 0;
-        }
-
-        if(frame >= 0 && frame <= 1)
-        {
-            spriteRenderer.sprite = sprites[frame + 4];
-        }
-
-        Invoke(nameof(AnimateScar), 1f / GameManager.Instance.gameSpeed);
-        
+        Invoke(nameof(Animate), 1f / GameManager.Instance.gameSpeed);
     }
 
 }

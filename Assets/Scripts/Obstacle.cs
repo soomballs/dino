@@ -34,13 +34,13 @@ public class Obstacle : MonoBehaviour
         }
         if (other.CompareTag("Projectile"))
         {
-            Debug.Log("projectile detected");
-            Destroy(gameObject);
+          //  Debug.Log("projectile detected");
+          //  Destroy(gameObject);
         }
 
         if (other.CompareTag("Player"))
         {
-            //Debug.Log("Obstacle Detected");
+            Debug.Log("Player Detected");
          //   GameManager.Instance.GameOver();
         }
     }
