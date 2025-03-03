@@ -2804,7 +2804,7 @@ MonoBehaviour:
   minSpawnRate: 1
   maxSpawnRate: 1.5
   TSpawn: {fileID: 1865679965}
-  player: {fileID: 0}
+  player: {fileID: 148276}
 --- !u!4 &1252021886
 Transform:
   m_ObjectHideFlags: 0

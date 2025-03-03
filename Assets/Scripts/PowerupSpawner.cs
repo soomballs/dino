@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PowerupSpawner : MonoBehaviour
@@ -15,13 +16,22 @@ public class PowerupSpawner : MonoBehaviour
     public float maxSpawnRate = 2f;
     public GameObject TSpawn;
     public Player player;
+    private bool shutDown = false;
 
     private GroundSpawn tItem;
 
     private void Start()
     {
         tItem = TSpawn.GetComponent<GroundSpawn>(); // Get reference to GroundSpawn script
-        InvokeRepeating(nameof(CheckAndSpawn), 0f, 0.5f); // Check every 0.5 seconds
+            if (tItem != null)
+    {
+        tItem.OnStopSpawning += HandleSpawningStopped; // Subscribe to the event
+    }
+    }
+
+    private void OnEnable()
+    {
+     Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));        
     }
 
     private void OnDisable()
@@ -29,19 +39,9 @@ public class PowerupSpawner : MonoBehaviour
         CancelInvoke();
     }
 
-    private void CheckAndSpawn()
-    {
-        if (tItem == null) return;
-
-        if (tItem.isSpawning && !IsInvoking(nameof(Spawn))) // Only spawn if allowed
-        {
-            Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
-        }
-    }
 
     private void Spawn()
     {
-        if (tItem == null || !tItem.isSpawning) return; // Stop if spawning is not allowed
 
         float spawnChance = Random.value;
 
@@ -51,6 +51,9 @@ public class PowerupSpawner : MonoBehaviour
             {
                 GameObject obstacle = Instantiate(obj.prefab);
                 obstacle.transform.position += transform.position;
+                if(shutDown) {
+                    Destroy(obstacle);
+                }
                 break;
             }
 
@@ -58,5 +61,34 @@ public class PowerupSpawner : MonoBehaviour
         }
 
         Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
+        
     }
+
+
+
+    private void HandleSpawningStopped()
+{
+    Debug.Log("no go"); // Print message when spawning stops
+    CancelInvoke();
+    StartCoroutine(shutCheck(1f));
+
+
+}
+
+private IEnumerator shutCheck(float duration) {
+    yield return new WaitForSeconds(duration);
+    GameManager.Instance.noMore = true;
+    shutDown = true;
+    StartCoroutine(spawnCheck(0.5f));
+}
+
+private IEnumerator spawnCheck(float duration) {
+    yield return new WaitForSeconds(duration);
+    shutDown = false;
+    GameManager.Instance.noMore = false;
+    Invoke(nameof(Spawn), Random.Range(minSpawnRate, maxSpawnRate));
+}
+
+
+
 }
