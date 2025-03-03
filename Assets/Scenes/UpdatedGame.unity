@@ -243,9 +243,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0a4a3e568691d40b504518f44a9e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
+  REGsprites:
   - {fileID: 21300000, guid: 9138bd4196615a14a840d76bdc47f64b, type: 3}
   - {fileID: 21300000, guid: 9dd7d801937e5a742a96b945cfa468ac, type: 3}
+  Glasssprites:
+  - {fileID: 21300000, guid: 57395b031ef617d47a5727fe43d5d10b, type: 3}
+  - {fileID: 21300000, guid: 458c6337895a2434d90e4fc9e5eace69, type: 3}
+  Scarsprites:
+  - {fileID: 21300000, guid: 19277e358362de74ab39548d6f7e8451, type: 3}
+  - {fileID: 21300000, guid: 982026d3058ec2d43a4cc311cd00a925, type: 3}
 --- !u!143 &148278
 CharacterController:
   m_ObjectHideFlags: 0
