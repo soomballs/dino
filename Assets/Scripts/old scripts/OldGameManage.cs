@@ -25,16 +25,20 @@ public class OldGameManage : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null) {
+        if (Instance != null)
+        {
             DestroyImmediate(gameObject);
-        } else {
+        }
+        else
+        {
             Instance = this;
         }
     }
 
     private void OnDestroy()
     {
-        if (Instance == this) {
+        if (Instance == this)
+        {
             Instance = null;
         }
     }
@@ -51,7 +55,8 @@ public class OldGameManage : MonoBehaviour
     {
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
 
-        foreach (var obstacle in obstacles) {
+        foreach (var obstacle in obstacles)
+        {
             Destroy(obstacle.gameObject);
         }
 
@@ -89,12 +94,12 @@ public class OldGameManage : MonoBehaviour
 
     private void UpdateHiscore()
     {
-        float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
+        float hiscore = PlayerPrefs.GetFloat("OLDhiscore", 0);
 
         if (score > hiscore)
         {
             hiscore = score;
-            PlayerPrefs.SetFloat("hiscore", hiscore);
+            PlayerPrefs.SetFloat("OLDhiscore", hiscore);
         }
 
         hiscoreText.text = Mathf.FloorToInt(hiscore).ToString("D5");

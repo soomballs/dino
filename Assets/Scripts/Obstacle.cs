@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Obstacle : MonoBehaviour
 {
     private float leftEdge;
@@ -13,14 +13,13 @@ public class Obstacle : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            transform.position += 1.5f * GameManager.Instance.gameSpeed * Time.deltaTime * Vector3.left;
-        }
-        else
-        {
+        string currentScene = SceneManager.GetActiveScene().name;
+        if(currentScene == "UpdatedGame") {
+            
             transform.position += GameManager.Instance.gameSpeed * Time.deltaTime * Vector3.left;
         }
+
+        
         
 
         if (transform.position.x < leftEdge) {

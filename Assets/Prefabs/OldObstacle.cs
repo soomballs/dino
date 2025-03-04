@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OldObstacle : MonoBehaviour
 {
@@ -11,7 +12,12 @@ public class OldObstacle : MonoBehaviour
 
     private void Update()
     {
-        transform.position += GameManager.Instance.gameSpeed * Time.deltaTime * Vector3.left;
+        string currentScene = SceneManager.GetActiveScene().name;
+        if(currentScene == "Game") {
+           
+            transform.position += OldGameManage.Instance.gameSpeed * Time.deltaTime * Vector3.left;
+        }
+
 
         if (transform.position.x < leftEdge)
         {

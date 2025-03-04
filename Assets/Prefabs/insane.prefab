@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 9020847862631447338}
   - component: {fileID: 9020847862631447339}
   - component: {fileID: 4945676691993435500}
+  - component: {fileID: -6763682754603363806}
   - component: {fileID: 2575146346937837417}
+  - component: {fileID: 1530201680286750390}
   - component: {fileID: -754154353536037816}
   - component: {fileID: -1319957235900924292}
   m_Layer: 0
@@ -101,6 +103,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.000171, y: 2.7577455, z: 1}
   m_Center: {x: -0.09707487, y: -0.92103636, z: 0}
+--- !u!114 &-6763682754603363806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9020847862631447337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa999a2a56178d429c35763e556e8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oldGame: {fileID: 1530201680286750390}
+  newGame: {fileID: -754154353536037816}
+  sceneForOldGame: Game
+  sceneForNewGame: UpdatedGame
 --- !u!114 &2575146346937837417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,9 +131,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0a4a3e568691d40b504518f44a9e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 46f53a456f6630c48939a8e43d1dd3d8, type: 3}
-  - {fileID: 21300000, guid: 36ff8417f47c0564dac83ad12f13f3ae, type: 3}
+  REGsprites: []
+  Glasssprites: []
+  Scarsprites: []
+--- !u!114 &1530201680286750390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9020847862631447337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f00f269aa81654288dfacc62d0f066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-754154353536037816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa01bef04456d489a93b8adc7fec01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TSpawn: {fileID: 7537230552433527769, guid: 195bb435fe326524e9b3bfc7ae4592d8, type: 3}
 --- !u!114 &-1319957235900924292
 MonoBehaviour:
   m_ObjectHideFlags: 0

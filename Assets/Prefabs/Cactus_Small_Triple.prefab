@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2008811433931751999}
   - component: {fileID: 2008811433931751998}
   - component: {fileID: -5579335367907545331}
+  - component: {fileID: 9003865876202462494}
+  - component: {fileID: -285663317587046148}
   - component: {fileID: -8365631238972323719}
   m_Layer: 0
   m_Name: Cactus_Small_Triple
@@ -99,6 +101,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0625, y: 0.7291667, z: 0.2}
   m_Center: {x: 0, y: -0.1354167, z: 0}
+--- !u!114 &9003865876202462494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008811433931751997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f00f269aa81654288dfacc62d0f066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-285663317587046148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008811433931751997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa999a2a56178d429c35763e556e8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oldGame: {fileID: 9003865876202462494}
+  newGame: {fileID: -8365631238972323719}
+  sceneForOldGame: Game
+  sceneForNewGame: UpdatedGame
 --- !u!114 &-8365631238972323719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,4 +141,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4aa01bef04456d489a93b8adc7fec01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TSpawn: {fileID: 7537230552433527769, guid: 195bb435fe326524e9b3bfc7ae4592d8, type: 3}

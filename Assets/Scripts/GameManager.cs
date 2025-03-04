@@ -104,6 +104,11 @@ public class GameManager : MonoBehaviour
         gameSpeed += gameSpeedIncrease * Time.deltaTime;
         score += gameSpeed * Time.deltaTime;
         scoreText.text = Mathf.FloorToInt(score).ToString("D5");
+
+            if (Input.GetKey(KeyCode.LeftShift))
+        {
+            gameSpeed *= 1.5f;
+        }
     }
 
     private void UpdateHiscore()

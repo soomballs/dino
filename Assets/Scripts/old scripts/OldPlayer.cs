@@ -40,7 +40,7 @@ public class OldPlayer : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            GameManager.Instance.GameOver();
+            OldGameManage.Instance.GameOver();
         }
     }
 

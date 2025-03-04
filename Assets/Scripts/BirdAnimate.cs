@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class BirdAnimate : MonoBehaviour
@@ -35,8 +36,14 @@ public class BirdAnimate : MonoBehaviour
         if (frame >= 0 && frame < sprites.Length) {
             spriteRenderer.sprite = sprites[frame];
         }
-
+        string currentScene = SceneManager.GetActiveScene().name;
+        
+        if(currentScene == "Game") {
+        Invoke(nameof(Animate), 1f / OldGameManage.Instance.gameSpeed);
+        } else {
         Invoke(nameof(Animate), 1f / GameManager.Instance.gameSpeed);
+        }
+
     }
 
 }
